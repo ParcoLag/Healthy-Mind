@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>HealthyMind - Registro</title>
+</head>
+<body>
+    <h1>Registro de usuario</h1>
+
+    <form action="registrar" method="post">
+        <p>Nombre: <input type="text" name="nombre" required></p>
+        <p>Edad: <input type="number" name="edad" min="1" max="120" required></p>
+        <p>Correo: <input type="email" name="correo" required></p>
+        <p>Contraseña: <input type="password" name="contrasena" required></p>
+        <p>Nacionalidad: <input type="text" name="nacionalidad"></p>
+        <p>Teléfono: <input type="text" name="telefono"></p>
+        <p><button type="submit">Registrar</button></p>
+    </form>
+</body>
+</html>
