@@ -1,0 +1,72 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba API HealthyMind</title>
+</head>
+<body>
+    <h1>Prueba de API - HealthyMind</h1>
+    <p>Este formulario sirve para comprobar el registro mediante la API.</p>
+
+    <form id="formulario">
+        <label>Nombre:</label><br>
+        <input name="nombre" value="Usuario Prueba API" required><br><br>
+
+        <label>Edad:</label><br>
+        <input name="edad" type="number" min="1" max="120" value="25" required><br><br>
+
+        <label>Correo:</label><br>
+        <input name="correo" type="email" value="prueba.api.2026@example.com" required><br><br>
+
+        <label>Contraseña:</label><br>
+        <input name="contrasena" type="password" value="ClavePruebaSegura2026!" required><br><br>
+
+        <label>Nacionalidad:</label><br>
+        <input name="nacionalidad" value="Colombiana" required><br><br>
+
+        <label>Teléfono:</label><br>
+        <input name="telefono" value="3001234567" required><br><br>
+
+        <button type="submit">Probar registro por API</button>
+    </form>
+
+    <h2>Respuesta del servidor</h2>
+    <pre id="resultado">Todavía no se ha enviado ninguna petición.</pre>
+
+    <script>
+        const formulario = document.getElementById("formulario");
+        const resultado = document.getElementById("resultado");
+
+        formulario.addEventListener("submit", async function (evento) {
+            evento.preventDefault();
+
+            const datos = Object.fromEntries(new FormData(formulario).entries());
+            datos.edad = Number(datos.edad);
+
+            resultado.textContent = "Enviando petición...";
+
+            try {
+                const respuesta = await fetch("/api/usuarios", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(datos)
+                });
+
+                const texto = await respuesta.text();
+
+                resultado.textContent =
+                    "Código HTTP: " + respuesta.status + "\n\n" + texto;
+            } catch (error) {
+                resultado.textContent =
+                    "No se pudo conectar con la API.\n" +
+                    "Verifica que Jetty esté ejecutándose.\n\n" + error.message;
+            }
+        });
+    </script>
+</body>
+</html>
+    

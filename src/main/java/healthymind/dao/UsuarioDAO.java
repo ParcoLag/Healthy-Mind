@@ -2,6 +2,7 @@ package healthymind.dao;
 
 import healthymind.conexion.ConexionBD;
 import healthymind.modelo.Usuario;
+import healthymind.seguridad.PasswordUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -23,7 +24,7 @@ public class UsuarioDAO {
             ps.setString(1, usuario.getNombre());
             ps.setInt(2, usuario.getEdad());
             ps.setString(3, usuario.getCorreo());
-            ps.setString(4, usuario.getContrasena());
+            ps.setString(4, PasswordUtil.hash(usuario.getContrasena()));
             ps.setString(5, usuario.getNacionalidad());
             ps.setString(6, usuario.getTelefono());
             ps.setString(7, usuario.getTipoUsuario());
@@ -51,7 +52,6 @@ public class UsuarioDAO {
                 usuario.setNombre(rs.getString("nombre"));
                 usuario.setEdad(rs.getInt("edad"));
                 usuario.setCorreo(rs.getString("correo"));
-                usuario.setContrasena(rs.getString("contrasena"));
                 usuario.setNacionalidad(rs.getString("nacionalidad"));
                 usuario.setTelefono(rs.getString("telefono"));
                 usuario.setTipoUsuario(rs.getString("tipo_usuario"));

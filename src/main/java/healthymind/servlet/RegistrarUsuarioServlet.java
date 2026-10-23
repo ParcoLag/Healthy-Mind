@@ -40,7 +40,7 @@ public class RegistrarUsuarioServlet extends HttpServlet {
             if (usuarioDAO.insertar(usuario)) {
                 mensaje = "Usuario registrado correctamente.";
             } else {
-                mensaje = "No se pudo registrar (revisa si el correo ya existe).";
+                mensaje = "No se pudo registrar (checa si el correo ya existe tilin jajaja).";
             }
         } catch (NumberFormatException e) {
             mensaje = "La edad debe ser un numero.";

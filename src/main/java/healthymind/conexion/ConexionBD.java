@@ -8,7 +8,7 @@ public class ConexionBD {
 
     private static final String URL = "jdbc:mysql://localhost:3306/healthymind";
     private static final String USUARIO = "root";
-    private static final String CLAVE = "contraseña placeholder.";
+    private static final String CLAVE = "gonzalezortiz2612.";
 
     public static Connection obtenerConexion() throws SQLException {
         try {
